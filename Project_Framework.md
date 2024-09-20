@@ -22,11 +22,8 @@ The dataset contains multiple independent variables related to transportation an
     - `low_income`: Income level (binary).
     - `no_vehicle`: Access to a vehicle (binary).
 
-### Preprocessing Steps
-- **One-Hot Encoding**: For categorical variables like `county_cate`, one-hot encoding is applied to convert them into numerical values.
-- **Standardization**: Continuous variables are standardized to have zero mean and unit variance for better model convergence.
 
-The dataset is then split into training (80%) and testing (20%) sets for model evaluation.
+The dataset will be split into training (80%) and testing (20%) sets for model evaluation.
 
 ---
 
