@@ -1,24 +1,26 @@
-# Enhancing Healthcare Accessibility Through Machine Learning: An ANN-based Approach to Understanding Transportation Perceptions
+# Predicting Near-Road Air Quality Using Artificial Neural Networks: Exploring Traffic-Related Influences
 
 ## Introduction
 
-Transportation plays a critical role in daily life, influencing access to essential services like healthcare. In South Carolina, the effectiveness of transportation systems greatly impacts healthcare accessibility, particularly for vulnerable groups such as low-income households, minorities, the elderly, and disabled individuals. These groups often face challenges like high travel costs, physical barriers to transportation, and safety concerns, which can prevent access to necessary healthcare services.
+The proposed project aims to investigate the relationships between near-road air quality and traffic-related factors using Artificial Neural Networks (ANN). This study addresses a critical issue: understanding how vehicular emissions and traffic dynamics affect air pollutant levels, such as Particulate Matter (PM1.0, PM2.5, PM10) and Nitrogen Dioxide (NO2), near high-traffic areas. The insights from this research could guide urban planners and policymakers in mitigating air pollution impacts on public health.
 
-Recent studies highlight how transportation perceptions vary significantly with demographic and geographic factors, influencing access to healthcare (Chen et al., 2022; Wang et al., 2021). This project builds on this foundation by employing machine learning to model these complex relationships, providing a deeper data-driven understanding of the barriers to healthcare accessibility. By examining the associations between perceived transportation disadvantages and healthcare inaccessibility in South Carolina through a comprehensive survey and employing a structural equation model (SEM), this research seeks to uncover nuanced data capturing the perceptions and experiences of different demographic groups.
+The motivation for this project arises from the increasing concern over air pollution and its health implications, especially in urban areas with high traffic volumes. Traditional approaches, such as linear regression models, have been effective but limited in capturing the nonlinear and complex relationships between traffic behavior and pollutant levels. By employing ANN, this project seeks to improve predictive accuracy and provide more nuanced insights into the interactions between traffic factors (e.g., vehicle counts, speed) and air quality.
 
 ## Data
 
-The study will utilize data from the South Carolina Healthcare survey, processed by our research group, which assesses perceptions of transportation and healthcare accessibility across various demographics and geographic locations within South Carolina. Additionally, multidimensional built environment data from EPA Smart Location Database and socio-demographic data from the U.S. Census will be applied.
+The dataset consists of high-resolution air quality and traffic data collected at the intersection of Taylor Street and Pine Street in downtown Columbia, SC. Variables include:
+Response Variables: Concentrations of PM1.0, PM2.5, PM10 (log-transformed) and NO2.
+Predictors: Traffic-related factors (e.g., counts of cars, trucks, multi-trailers, average speed, gaps between vehicles) and environmental variables (temperature, humidity, atmospheric pressure).
 
 ## Methodology
 
-Artificial Intelligence (AI), particularly Artificial Neural Networks (ANN), offers a powerful tool for modeling complex relationships in this context. An artificial neural network (ANN) will be developed to model the associations between perceived transportation disadvantages and factors like socio-demographic characteristics and the built environment. This approach will leverage existing frameworks, TensorFlow for model development. Modifications may include adjusting network architecture or training procedures to enhance model performance and interpretability.
+The project will use ANN to model and predict pollutant concentrations. The ANN model will be compared against traditional methods like Multiple Linear Regression (MLR) to evaluate its performance, particularly in handling complex and nonlinear interactions.
 
 ## Evaluation and Expected Outcomes
 
-The model's effectiveness will be evaluated through metrics such as accuracy, precision, and recall. Expected outcomes include detailed maps and visualizations of transportation perceptions and their impact on healthcare accessibility, which could significantly inform targeted interventions.
+The performance of the ANN model will be evaluated using metrics such as Root Mean Squared Error (RMSE) and Coefficient of Determination (R²). Additionally, the effectiveness of ANN will be compared with MLR and Bayesian Model to assess improvements in predictive accuracy.
 
-## References
+## Expected Outcomes
 
-- Chen, Yuche, Sicheng Wang, and Xuanke Wu. “Exploring Perceived Transportation Disadvantages: Distribution Disparities and Associations with the Built Environment.” Transportation Research Part D: Transport and Environment 112 (November 2022): 103497. [https://doi.org/10.1016/j.trd.2022.103497](https://doi.org/10.1016/j.trd.2022.103497).
-- Wang, Sicheng, Xuanke Wu, and Yuche Chen. “Association between Perceived Transportation Disadvantages and Opportunity Inaccessibility: A Social Equity Study.” Transportation Research Part D: Transport and Environment 101 (December 2021): 103119. [https://doi.org/10.1016/j.trd.2021.103119](https://doi.org/10.1016/j.trd.2021.103119).
+A detailed analysis of how traffic behaviors influence near-road air quality.
+Insights into which factors are most significant in predicting pollutant levels, enabling data-driven recommendations for traffic and air quality management.
