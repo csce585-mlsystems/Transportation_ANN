@@ -38,8 +38,6 @@ The ANN model is designed to predict pollutant concentrations using the followin
   - 80% of the dataset for training, 20% for testing.
   - Early stopping based on validation loss to prevent overfitting.
 - **Hyperparameters:** Learning rate, batch size, and number of neurons are tuned using cross-validation.
-- **Comparative Models:** 
-  - Baseline models like Multiple Linear Regression (MLR) and Decision Trees are included for performance comparison.
 
 ---
 
@@ -52,7 +50,14 @@ The ANN model is designed to predict pollutant concentrations using the followin
 - **Cross-Validation:** k-fold cross-validation to ensure robustness of results.
 
 ### Model Comparison
-- **Baseline Comparison:** Evaluate ANN against MLR and Decision Trees to justify the need for ANN's complexity.
+- **Comparative Models:** 
+ The effectiveness of the ANN model will be evaluated against:
+- **Multiple Linear Regression (MLR):** 
+  - MLR serves as a simple baseline model. The comparison will show whether the non-linear ANN captures complex relationships better than a traditional linear approach.
+- **Bayesian Approach:** 
+  - The Bayesian model provides probabilistic predictions and uncertainty estimates, which can be beneficial in understanding the reliability of predictions.
+  - Compare metrics such as RMSE, R², and MAE across the ANN, MLR, and Bayesian models. 
+  - **Posterior Distributions and Credible Intervals:** Bayesian methods will also be evaluated for their ability to provide insight into the uncertainty of predictions, an aspect not directly addressed by ANN and MLR.
 
 ---
 
