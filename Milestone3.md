@@ -17,7 +17,7 @@ In this milestone, we expanded upon previous modeling efforts by implementing Mu
 
 **Predicted vs. Actual Plot for NO₂:**
 
-![Predicted vs. Actual NO₂](results/plots/predicted_vs_actual_NO₂.png)
+![Predicted vs. Actual NO₂](results/plots/predicted_vs_actual_NO2.png)
 
 #### PM₁.₀ Dataset
 
