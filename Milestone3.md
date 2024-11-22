@@ -4,7 +4,7 @@
 
 The project's goal is to predict near-road air quality by modeling the complex relationships between traffic-related factors, environmental conditions, and pollutant concentrations using Artificial Neural Networks (ANNs). The response variables include concentrations of PM₁.₀, PM₂.₅, PM₁₀, and NO₂. The predictors encompass traffic counts (`car`, `truck`, `multi_trailer`), vehicle speeds (`speed`), gaps between vehicles (`gap`), and environmental factors (`temperature`, `humidity`, `air_pressure`).
 
-In this milestone, we expanded upon previous modeling efforts by implementing Multiple Linear Regression (MLR), Bayesian Regression Models, and ANNs. We also incorporated model interpretability techniques such as SHAP (SHapley Additive exPlanations) and LIME (Local Interpretable Model-agnostic Explanations), and performed cross-validation to assess model robustness.
+In this milestone, we expanded upon previous modeling efforts by implementing Multiple Linear Regression (MLR), Bayesian Regression Models, and ANNs. We also incorporated model interpretability technique LIME (Local Interpretable Model-agnostic Explanations), and performed cross-validation to assess model robustness.
 
 ## Summary of Results
 
@@ -130,34 +130,104 @@ The significant improvements in R² and RMSE for PM predictions suggest that the
 - **Public Health**: Improved air quality modeling contributes to better health risk assessments for populations near roads.
 - **Urban Planning**: Insights from the model can guide infrastructure development to mitigate pollution hotspots.
 
-### Enhancing Interpretability
-
-#### SHAP (SHapley Additive exPlanations)
-
-- **Purpose**: Quantify the contribution of each feature to the model's predictions.
-- **Implementation**:
-  - Calculated SHAP values for the ANN model.
-  - Generated summary plots and dependence plots to visualize feature importance and interactions.
-- **Findings**:
-  - **NO₂**:
-    - `truck` and `multi_trailer` counts are the most influential features.
-    - `temperature` negatively impacts NO₂ concentrations.
-  - **PM Datasets**:
-    - `humidity` and `temperature` have significant effects on PM concentrations.
-
-#### SHAP Summary Plot for NO₂
-
-![SHAP Summary Plot for NO₂](results/plots/shap_summary_NO2.png)
-
-#### LIME (Local Interpretable Model-agnostic Explanations)
+### LIME (Local Interpretable Model-agnostic Explanations)
 
 - **Purpose**: Explain individual predictions by approximating the model locally with an interpretable model.
+
 - **Implementation**:
-  - Applied LIME to specific instances where the model's prediction is critical or unexpected.
+  - Applied LIME to specific instances where the model's predictions are critical or unexpected.
+  - Analyzed the contributions of individual features to the model's predictions for NO₂ and PM levels.
+
 - **Findings**:
-  - **Example Instance for NO₂**:
-    - High `truck` counts increase NO₂ levels.
-    - Higher `temperature` decreases NO₂ levels.
+
+The LIME analyses provided valuable insights into how specific features influenced the model's predictions at the individual instance level. The key observations from the LIME explanations are as follows:
+
+#### General Observations Across All Results
+
+- **Predicted Values**:
+  - The predicted pollutant concentrations varied for each instance, reflecting the combined effects of traffic and environmental factors on NO₂ and PM levels.
+  - This variability showcases the model's responsiveness to changes in feature inputs and provides insight into how different conditions affect pollution levels.
+
+- **Feature Contributions**:
+  - Features consistently exhibited both positive (increasing predicted values) and negative (decreasing predicted values) contributions for the explained instances.
+  - Both traffic-related features (e.g., `multi_trailer`, `truck`, `speed`, `gap`) and environmental factors (e.g., `temperature`, `humidity`, `air_pressure`) played significant roles in influencing the model's predictions.
+
+#### Key Feature Insights
+
+**1. Traffic-Related Factors**
+
+- **`multi_trailer` and `truck`**:
+  - These features were strong positive contributors to both NO₂ and PM levels, aligning with their association with heavy diesel emissions.
+  - Higher counts of multi-trailer vehicles and trucks significantly increased predicted pollution levels.
+  - Larger values for `multi_trailer` and `truck` led to higher contributions to pollution levels, emphasizing the impact of heavy-duty vehicles.
+
+- **`gap`**:
+  - Smaller vehicle gaps (indicative of congested traffic conditions) consistently contributed to increased pollution levels.
+  - This is likely due to reduced air circulation and increased tailpipe emissions in dense traffic, leading to higher pollutant concentrations.
+
+- **`speed`**:
+  - Higher vehicle speeds were associated with reduced pollution levels, especially for PM.
+  - The negative contributions suggest that faster-moving traffic may facilitate better dispersion of pollutants and reduce the time emissions linger near the roadway.
+
+- **`car`**:
+  - The contribution of passenger cars was mixed across instances but generally had a smaller impact compared to heavy-duty vehicles.
+  - This indicates that while cars contribute to pollution, their effect is less significant than that of trucks and multi-trailers.
+
+**2. Environmental Factors**
+
+- **`temperature`**:
+  - Higher temperatures positively contributed to increased NO₂ and PM levels.
+  - Warmer conditions may enhance chemical reactions and secondary pollutant formation, leading to higher concentrations.
+
+- **`humidity`**:
+  - Elevated humidity levels also had a positive impact on pollution levels.
+  - High moisture content in the air might facilitate particle aggregation or influence chemical transformations that increase pollutant concentrations.
+
+- **`air_pressure`**:
+  - Lower atmospheric pressure contributed to decreased pollution levels, acting as a negative contributor.
+  - This may be due to enhanced dispersion of pollutants or less stable atmospheric conditions that prevent accumulation near the ground.
+
+#### Findings by Pollutant
+
+**NO₂ (Nitrogen Dioxide)**
+
+- **Dominant Contributors**:
+  - `multi_trailer` and `truck` counts were the strongest traffic-related contributors to NO₂ levels.
+  - Environmental factors like `temperature` and `humidity` significantly amplified NO₂ concentrations.
+- **Mitigation Insight**:
+  - Reducing heavy-duty traffic density and monitoring environmental conditions can effectively mitigate NO₂ pollution.
+  - Policies focusing on emission controls for trucks and multi-trailers could have a substantial impact.
+
+**Particulate Matter (PM₁.₀, PM₂.₅, PM₁₀)**
+
+- **Dominant Contributors**:
+  - Traffic congestion indicators, such as `multi_trailer` counts and smaller `gap`, were primary drivers of PM levels.
+  - Environmental factors, particularly `temperature` and `humidity`, supported increases in PM concentrations.
+- **Mitigation Insight**:
+  - Improving traffic flow to reduce congestion can directly lower PM emissions.
+  - Strategies to manage heavy-duty vehicle activity during peak times or under unfavorable environmental conditions may be effective.
+
+#### Conclusion
+
+The LIME explanations highlight the critical influence of heavy-duty vehicles and traffic conditions on near-road air quality. Heavy-duty vehicles (e.g., multi-trailers, trucks) and congested traffic significantly contribute to increased levels of NO₂ and PM pollutants. Environmental factors such as temperature and humidity further amplify these effects, suggesting that pollution levels are not solely dependent on traffic volume but also on prevailing weather conditions.
+
+**Mitigation Recommendations**
+
+- **Traffic Management**:
+  - Implement policies to restrict heavy-duty vehicle access in urban areas during peak traffic hours.
+  - Optimize traffic flow using intelligent transportation systems to reduce congestion and improve vehicle speeds.
+  - Encourage the use of alternative routes for heavy-duty vehicles to minimize their impact on densely populated areas.
+
+- **Emission Controls**:
+  - Enforce stricter emission standards for trucks and multi-trailers.
+  - Promote the adoption of cleaner technologies and fuels in heavy-duty transportation.
+
+- **Environmental Considerations**:
+  - Develop adaptive traffic and emission control strategies that consider real-time environmental conditions, such as high temperatures and humidity levels.
+  - Enhance air quality monitoring and predictive capabilities during periods prone to higher pollution levels.
+
+**Overall**, the LIME analyses provided actionable insights into the factors contributing to air pollution near roadways. By understanding the specific contributions of each feature, policymakers and urban planners can design targeted interventions to improve air quality and public health outcomes.
+
 
 ##### LIME Explanation for NO₂
 
@@ -238,7 +308,7 @@ The significant improvements in R² and RMSE for PM predictions suggest that the
 
 - **Positive Outcomes**:
   - The ANN model outperformed traditional methods for PM predictions, significantly improving R² and RMSE values.
-  - SHAP and LIME enhanced the interpretability of the ANN model, providing valuable insights into feature importance.
+  - LIME enhanced the interpretability of the ANN model, providing valuable insights into feature importance.
 - **Challenges**:
   - Variability in cross-validation results for PM datasets indicates the need for further model refinement.
   - Negative R² values suggest issues with model generalization and data quality.
@@ -249,18 +319,14 @@ The significant improvements in R² and RMSE for PM predictions suggest that the
    - Collect additional data to increase sample size.
    - Improve data preprocessing to handle noise and outliers effectively.
 
-2. **Model Optimization**:
-   - Perform hyperparameter tuning using cross-validation results.
-   - Experiment with different ANN architectures.
-
-3. **Feature Exploration**:
+2. **Feature Exploration**:
    - Incorporate new predictors relevant to PM concentrations.
    - Conduct correlation analysis to identify important features.
 
-4. **Alternative Models**:
+3. **Alternative Models**:
    - Explore other machine learning models (e.g., Random Forests, Gradient Boosting Machines) for PM predictions.
 
-5. **Policy Implications**:
+4. **Policy Implications**:
    - Use model insights to inform traffic management and emission reduction strategies.
    - Collaborate with policymakers to translate findings into actionable plans.
 
@@ -269,5 +335,3 @@ The significant improvements in R² and RMSE for PM predictions suggest that the
 This milestone has demonstrated the potential of ANNs in predicting near-road air quality, particularly for PM concentrations. By addressing the identified challenges and implementing the proposed next steps, we aim to enhance the model's performance and contribute to effective environmental policy development.
 
 ---
-
-*Note: All plots and figures are stored in the `results/plots/` directory and can be referenced in the report as needed.*
