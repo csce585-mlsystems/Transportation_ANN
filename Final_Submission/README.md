@@ -1,4 +1,3 @@
-YouTube Link for the presentation: 
 # Predicting Near-Road Air Quality Using Artificial Neural Networks
 
 This repository contains the resources and instructions needed to replicate the results from the study: **Predicting Near-Road Air Quality Using Artificial Neural Networks: Exploring Traffic-Related Influences**. The project leverages machine learning to predict near-road pollutant concentrations using traffic and environmental variables.
@@ -79,5 +78,3 @@ The trained ANN model achieves high predictive performance:
 This project is part of the research by Yihong Ning, Ph.D. student in Civil Engineering, University of South Carolina. The datasets were collected near Taylor Street, Columbia, SC, as part of the study on traffic-related air quality influences.
 
 A video presentation summarizing the project is available at https://youtu.be/d_vfp8AU2iY.
-
-If you have questions or need further assistance, feel free to raise an issue in this repository.
