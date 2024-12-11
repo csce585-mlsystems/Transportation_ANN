@@ -78,6 +78,6 @@ The trained ANN model achieves high predictive performance:
 ## Acknowledgements
 This project is part of the research by Yihong Ning, Ph.D. student in Civil Engineering, University of South Carolina. The datasets were collected near Taylor Street, Columbia, SC, as part of the study on traffic-related air quality influences.
 
-A video presentation summarizing the project will be available soon. The link will be provided here once created.
+A video presentation summarizing the project is available at https://youtu.be/d_vfp8AU2iY.
 
 If you have questions or need further assistance, feel free to raise an issue in this repository.
